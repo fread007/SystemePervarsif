@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ipojo xmlns="org.apache.felix.ipojo">
-  <component classname="com.exemple.binary.follow.me.BinaryFollowMeImpl" name="BinaryFollowMe">
+  <component classname="com.exemple.follow.me.FollowMe" name="BinaryFollowMe">
     <requires aggregate="true" optional="true" specification="fr.liglab.adele.icasa.device.light.BinaryLight" field="binaryLights">
       <callback method="bindBinaryLights" type="bind"/>
       <callback method="unbindBinaryLights" type="unbind"/>
@@ -11,6 +11,22 @@
     </requires>
     <callback method="start" transition="validate"/>
     <callback method="stop" transition="invalidate"/>
+    <requires aggregate="true" optional="true" specification="fr.liglab.adele.icasa.device.doorWindow.DoorWindowSensor" field="doorWindows">
+      <callback method="bindDoorWindowSensors" type="bind"/>
+      <callback method="unbindDoorWindowSensors" type="unbind"/>
+    </requires>
+    <requires aggregate="true" optional="true" specification="fr.liglab.adele.icasa.device.temperature.Thermometer" field="thermometers">
+      <callback method="bindThermometers" type="bind"/>
+      <callback method="unbindThermometers" type="unbind"/>
+    </requires>
+    <requires aggregate="true" optional="true" specification="fr.liglab.adele.icasa.device.light.Photometer" field="photometers">
+      <callback method="bindPhotometers" type="bind"/>
+      <callback method="unbindPhotometers" type="unbind"/>
+    </requires>
+    <requires aggregate="true" optional="true" specification="fr.liglab.adele.icasa.device.temperature.Heater" field="heaters">
+      <callback method="bindHeaters" type="bind"/>
+      <callback method="unbindHeaters" type="unbind"/>
+    </requires>
   </component>
   <instance component="BinaryFollowMe" name="my.first.follow.me"/>
 </ipojo>
